@@ -17,7 +17,7 @@ function startGame(){
 
 function shuffleCards(cards){
 
-    let currentIndex = cards.length;
+    // let currentIndex = cards.length;
     let randomIndex = 0;
 
     while(currentIndex !== 0) {
