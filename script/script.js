@@ -3,12 +3,36 @@ const BACK = "card_back"
 
 let techs = ['bootstrap','firebase','typescript','visual','react', 'github', 'css','html','mongo','javascript']
 
-createCardFromTechs(techs)
+let cards = null; 
+
+startGame();
+
+function startGame(){
+
+    cards = createCardFromTechs(techs);
+    shuffleCards(cards);
+    console.log(cards);
+
+}
+
+function shuffleCards(cards){
+
+    let currentIndex = cards.length;
+    let randomIndex = 0;
+
+    while(currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+
+        [cards[randomIndex], cards[currentIndex]] = [cards[currentIndex], cards[randomIndex]]
+    }
+}
+
 function createCardFromTechs(techs) {
     
     let cards = [];
 
-    for(let tech of techs){
+        for(let tech of techs){
         cards.push(createPairfromTech(tech));   
     }
 
