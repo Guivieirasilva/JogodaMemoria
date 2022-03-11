@@ -72,11 +72,10 @@ function createCardFromTechs(techs) {
     
     let cards = [];
 
-        for(let tech of techs){
-        cards.push(createPairfromTech(tech));   
-    }
-
-   return cards.flatMap(pair => pair);
+        techs.forEach((tech) => {
+            cards.push(createPairfromTech(tech));   
+    })
+    return cards.flatMap(pair => pair);
 
 }
 
@@ -93,7 +92,7 @@ function createPairfromTech(tech){
     }]
 }
 function createIdWithTech(tech){
-    return tech + parseInt(Math.random() + 1000)
+    return tech + parseInt(Math.random() * 1000)
 }
 function flipcard(){
  this.classList.add("flip")
