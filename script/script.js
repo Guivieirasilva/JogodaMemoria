@@ -11,13 +11,18 @@ function startGame(){
 
     cards = createCardFromTechs(techs);
     shuffleCards(cards);
-    console.log(cards);
 
+    initializeCards(cards)
+
+}
+function initializeCards(cards){
+    let gameboard = document.getElementById("gameBoard")
+    console.log(gameboard)
 }
 
 function shuffleCards(cards){
 
-    // let currentIndex = cards.length;
+    let currentIndex = cards.length;
     let randomIndex = 0;
 
     while(currentIndex !== 0) {
@@ -36,7 +41,7 @@ function createCardFromTechs(techs) {
         cards.push(createPairfromTech(tech));   
     }
 
-   return console.log(cards.flatMap(pair => pair));
+   return cards.flatMap(pair => pair);
 
 }
 
