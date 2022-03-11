@@ -1,7 +1,9 @@
 const FRONT = "card_front"
 const BACK = "card_back"
+const CARD = "card"
+const ICON = "icon"
 
-let techs = ['bootstrap','firebase','typescript','visual','react', 'github', 'css','html','mongo','javascript']
+let techs = ['bootstrap','firebase','typescript','visual','react', 'github', 'css','html','mongodb','javascript']
 
 let cards = null; 
 
@@ -16,8 +18,41 @@ function startGame(){
 
 }
 function initializeCards(cards){
-    let gameboard = document.getElementById("gameBoard")
-    console.log(gameboard)
+    let gameBoard = document.getElementById("gameBoard")
+    
+    cards.forEach(card => {
+        let cardElement = document.createElement('div');
+        cardElement.id = card.id;
+        cardElement.classList.add(CARD);
+        cardElement.dataset.icon = card.icon;
+
+        createCardContent(card, cardElement);
+
+        cardElement.addEventListener('click', flipcard)
+         gameBoard.appendChild(cardElement);
+    });
+}
+
+function createCardContent(card, cardElement){
+
+    createCardFace(FRONT, card, cardElement);
+    createCardFace(BACK, card, cardElement);
+
+}
+
+function createCardFace(face, card, element){
+
+    let cardElementFace = document.createElement('div');
+    cardElementFace.classList.add(face);
+        if(face === FRONT){
+            let iconElement = document.createElement('img')
+            iconElement.classList.add(ICON);
+            iconElement.src = "./style/imagens/" + card.icon + ".png";
+            cardElementFace.appendChild(iconElement)
+        }else{
+            cardElementFace.innerHTML = "&lt;/&gt";
+        }
+    element.appendChild(cardElementFace);
 }
 
 function shuffleCards(cards){
@@ -59,4 +94,7 @@ function createPairfromTech(tech){
 }
 function createIdWithTech(tech){
     return tech + parseInt(Math.random() + 1000)
+}
+function flipcard(){
+ this.classList.add("flip")
 }
