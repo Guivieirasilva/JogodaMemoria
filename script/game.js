@@ -4,6 +4,10 @@ let game = {
     firstCard: null,
     secondCard: null,
 
+    techs: ['bootstrap','firebase','typescript','visual','react', 'github', 'css','html','mongodb','javascript'],
+
+    cards: null,
+
     setCard: function (id){
         let card = this.cards.filter(card => card.id === id)[0];
         console.log(card);
@@ -43,9 +47,9 @@ let game = {
         this.clearCards();
     },
 
-    techs: ['bootstrap','firebase','typescript','visual','react', 'github', 'css','html','mongodb','javascript'],
-
-    cards: null,
+    checkGameOver(){
+       return this.cards.filter(card => !card.flipped).length == 0;
+    },
 
     createCardFromTechs: function (techs) {
     
